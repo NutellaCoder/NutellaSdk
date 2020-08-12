@@ -14,6 +14,7 @@ class Nutella(threading.Thread):
 
     def __init__(self):
         self.requestData=dict()
+        self.psValue=psutil.Process()
 
 
     def init(self,modelName=None, projectKey=None, reinit=False):
@@ -30,6 +31,13 @@ class Nutella(threading.Thread):
         for key,value in logDatas.items():
             self.requestData[key]=value
 
+    def hardwareSystemValue(self):
+        p = psutil.Process()
+        self.requestData["cpu"]=min(65535, int(((p.cpu_percent(interval=None) / 100) / psutil.cpu_count(False)) * 65535))
+        self.requestData["memory"]= min(65535, int((p.memory_percent() / 100) * 65535))
+        self.requestData["net"]=psutil.net_io_counters()
+        self.requestData["disk"]=psutil.disk_io_counters()
+
     def printDict(self):
         print(self.requestData)
         a=nutellaRequests.Requests()
@@ -37,8 +45,10 @@ class Nutella(threading.Thread):
 
 
 
+
 a=Nutella()
 a.init(modelName="123",projectKey="12345",reinit=True)
+a.hardwareSystemValue()
 a.printDict()
 
 

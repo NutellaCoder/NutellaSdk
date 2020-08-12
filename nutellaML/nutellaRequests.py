@@ -3,8 +3,6 @@ import aiohttp
 import json
 
 class Requests(threading.Thread):
-    def __int__(self):
-        print("test")
 
     async def requestAction(self, requestDatas):
         url="http://localhost:8080/test3"
