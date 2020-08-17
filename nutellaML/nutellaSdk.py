@@ -27,9 +27,11 @@ class Nutella(threading.Thread):
         for key,value in configDatas.items():
             self.requestData[key]=value
 
-    def log(self,**logDatas):
-        for key,value in logDatas.items():
-            self.requestData[key]=value
+    def log(self,accuracy=None, loss=None,precision=None, recall=None):
+        self.requestData["accuracy"]=accuracy
+        self.requestData["loss"]=loss
+        self.requestData["precision"]=precision
+        self.recall["recall"]=recall
 
     def hardwareSystemValue(self):
         p = psutil.Process()
