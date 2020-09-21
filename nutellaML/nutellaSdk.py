@@ -48,12 +48,5 @@ class Nutella(threading.Thread):
 
 
 
-a=Nutella()
-a.init(modelName="123",projectKey="12345",reinit=True)
-a.hardwareSystemValue()
-a.printDict()
-
-
-
 
 

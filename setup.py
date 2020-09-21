@@ -3,10 +3,9 @@ from setuptools import setup, find_packages
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-
 setup(
     name='nutellaML',
-    version='0.1',
+    version='0.15',
     description='nutella service sdk',
     author='kitoha',
     author_email='kth004@naver.com',
